@@ -1,5 +1,6 @@
 package com.todoapp.todo.entities;
 
+import com.todoapp.todo.dto.UserDTO;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -18,6 +19,11 @@ public class User {
     List<Task> tasks = new ArrayList<>();
 
     public User() {
+    }
+
+    public User(UserDTO userDTO){
+        this.id = userDTO.getId();
+        this.username = userDTO.getUsername();
     }
 
     public User(Long id, String username, List<Task> tasks) {

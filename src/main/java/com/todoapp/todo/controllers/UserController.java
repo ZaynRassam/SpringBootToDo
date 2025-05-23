@@ -4,6 +4,7 @@ import com.todoapp.todo.dto.UserDTO;
 import com.todoapp.todo.entities.User;
 import com.todoapp.todo.repositories.UserRepository;
 import com.todoapp.todo.services.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,8 +24,7 @@ public class UserController {
     }
 
     @PostMapping
-    public UserDTO createUser(@RequestBody User user){
-        userService.createUser(user);
-        return new UserDTO(user);
+    public UserDTO createUser(@Valid @RequestBody UserDTO userDTO){
+        return new UserDTO(userService.createUser(new User(userDTO)));
     }
 }

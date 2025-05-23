@@ -1,11 +1,14 @@
 package com.todoapp.todo.dto;
 
 import com.todoapp.todo.entities.User;
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.List;
 
 public class UserDTO {
     private Long id;
+
+    @NotBlank(message = "Username is required")
     private String username;
     private List<TaskDTO> tasks;
 
