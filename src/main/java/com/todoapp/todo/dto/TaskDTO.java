@@ -12,6 +12,7 @@ public class TaskDTO {
     private boolean completed;
     private LocalDateTime createdAt;
     private Date dueDate;
+    private Long userId;
 
     public TaskDTO() {
     }
@@ -22,6 +23,7 @@ public class TaskDTO {
         this.completed = task.isCompleted();
         this.createdAt = task.getCreatedAt();
         this.dueDate = task.getDueDate();
+        this.userId = task.getUser().getId();
     }
 
     public TaskDTO(Long id, String title, boolean completed, LocalDateTime createdAt, Date dueDate, Long userId) {
@@ -30,6 +32,7 @@ public class TaskDTO {
         this.completed = completed;
         this.createdAt = createdAt;
         this.dueDate = dueDate;
+        this.userId = userId;
     }
 
     public Long getId() {
@@ -70,5 +73,13 @@ public class TaskDTO {
 
     public void setDueDate(Date dueDate) {
         this.dueDate = dueDate;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

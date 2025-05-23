@@ -21,14 +21,19 @@ public class Task {
     @Column(name = "due_date")
     private Date dueDate;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public Task() {
     }
 
-    public Task(Long id, String title, boolean completed, Date dueDate) {
+    public Task(Long id, String title, boolean completed, Date dueDate, User user) {
         this.id = id;
         this.title = title;
         this.completed = completed;
         this.dueDate = dueDate;
+        this.user = user;
     }
 
     public Long getId() {
@@ -69,6 +74,14 @@ public class Task {
 
     public void setDueDate(Date dueDate) {
         this.dueDate = dueDate;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
 

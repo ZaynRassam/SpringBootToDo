@@ -18,15 +18,12 @@ public class TaskController {
 
     @GetMapping
     public List<TaskDTO> getAllTasks(){
-        List<TaskDTO> taskDTOList = new ArrayList<>();
-        List<Task> tasks = taskService.getAllTasks();
-        taskDTOList = tasks.stream().map(task -> new TaskDTO(task)).toList();
-        return taskDTOList;
+        return taskService.getAllTasks().stream().map(TaskDTO::new).toList();
     }
 
     @PostMapping
     public TaskDTO createTask(@RequestBody TaskDTO taskDTO){
-        taskService.createTask(taskDTO);
-        return taskDTO;
+        Task task = taskService.createTask(taskDTO);
+        return new TaskDTO(task);
     }
 }
